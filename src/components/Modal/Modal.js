@@ -3,12 +3,21 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import { colorsComponent } from '../Colors/colors';
+import { useEffect } from 'react';
 
 function ModalComponents(props) {
   const [taskname,setTaskname]=useState("");
   const [date,setDate]=useState("");
   const [categories,setCategories]=useState("");
   const [text,setText]=useState("");
+
+  const [formValidation,setFormValidation]=useState({
+    taskname:taskname,
+    date:date,
+    categories:categories,
+    text:text,
+    isValid:true,
+  })
 
   
   
@@ -18,6 +27,45 @@ function ModalComponents(props) {
   
   "Cancelled","Pending"
 ]
+
+  useEffect(()=>{
+    let textErrorMessage="";
+    let categoriesErrorMessage="";
+    let dateErrorMessage="";
+    let tasknameErrorMessage = "";
+    let isFormValid=true;
+
+    if(!taskname.length){
+      tasknameErrorMessage="Please complete the entire form"
+      isFormValid=false;
+    }
+
+    if(!text.length){
+      textErrorMessage="Please complete the entire form";
+      isFormValid=false;
+    }
+
+    if(!date.length){
+      dateErrorMessage="Please complete the entire form";
+      isFormValid=false;
+    }
+
+    if(!categories.length){
+      categoriesErrorMessage="Please complete the entire form";
+      isFormValid=false;
+    }
+
+    setFormValidation({
+      text:textErrorMessage,
+      taskname:tasknameErrorMessage,
+      categories:categoriesErrorMessage,
+      date:dateErrorMessage,
+      isValid:isFormValid
+      
+    })
+
+  }
+  ,[taskname,date,categories,text])
 
 const handleDate=(e)=>{
   setDate(e.target.value)
@@ -77,7 +125,8 @@ const handleDate=(e)=>{
                 placeholder="go shopping"
                 autoFocus
               />
-              <Form.Label className='my-1'>Select a date</Form.Label>
+              <p>{formValidation.taskname}</p>
+              <Form.Label className="my-1" >Select a date</Form.Label>
               <Form.Control
                 className='my-1'
                 onChange={handleDate}
@@ -85,6 +134,7 @@ const handleDate=(e)=>{
                 type="date"
                 autoFocus
               />
+              <p>{formValidation.date}</p>
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlSelect1">
             <Form.Label className='my-1'>Form Categories</Form.Label>
@@ -101,7 +151,7 @@ const handleDate=(e)=>{
                   </option>))
                 }
               </select>
-
+              <p>{formValidation.categories}</p>
             </Form.Group>
             <Form.Group
               className="mb-3"
@@ -110,13 +160,14 @@ const handleDate=(e)=>{
               <Form.Label>Example textarea</Form.Label>
               <Form.Control onChange={handleText} value={text} as="textarea" rows={3} />
             </Form.Group>
+            <p>{formValidation.text}</p>
           </Form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleSave}>
+          <Button disabled={!formValidation.isValid} variant="primary" onClick={handleSave}>
             Save Changes
           </Button>
         </Modal.Footer>

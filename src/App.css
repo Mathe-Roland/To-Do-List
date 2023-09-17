@@ -1,0 +1,11 @@
+.row{
+  display: flex;
+}
+
+.wrap{
+  flex-wrap: wrap;
+}
+
+.justify-content-center{
+  justify-content: center;
+}

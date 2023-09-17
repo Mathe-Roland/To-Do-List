@@ -2,7 +2,7 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/esm/Button';
 import "./TaskCard.css";
 
-export function CardComponent(props) {
+export function CardComponents(props) {
   const variant = 'white';
 
 

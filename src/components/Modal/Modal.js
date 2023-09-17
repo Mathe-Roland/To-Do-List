@@ -2,9 +2,9 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
-import { colors } from '../Colors/colors';
+import { colorsComponent } from '../Colors/colors';
 
-function ModalComponent(props) {
+function ModalComponents(props) {
   const [taskname,setTaskname]=useState("");
   const [date,setDate]=useState("");
   const [categories,setCategories]=useState("");
@@ -95,7 +95,7 @@ const handleDate=(e)=>{
                
               >
                 {categoryList.map((listItem)=>
-                  (<option style={{backgroundColor:colors(listItem)}}
+                  (<option style={{backgroundColor:colorsComponent(listItem)}}
                   key={listItem} value={listItem} 
                   >{listItem}
                   </option>))
@@ -125,4 +125,4 @@ const handleDate=(e)=>{
   );
 }
 
-export default ModalComponent;
+export default ModalComponents;

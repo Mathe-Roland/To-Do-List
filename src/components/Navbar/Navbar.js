@@ -2,11 +2,11 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import { colors } from '../Colors/colors';
+import { colorsComponent } from '../Colors/colors';
 import Button from 'react-bootstrap/esm/Button';
 import { useState } from 'react';
 
-function NavbarComponent(props) {
+function NavbarComponents(props) {
 
 
 
@@ -43,7 +43,7 @@ const handleShow = () => {
 
               {categoryList.map((categories)=>(
                 <NavDropdown.Item
-                style={{backgroundColor:colors(categories)}}
+                style={{backgroundColor:colorsComponent(categories)}}
                 key={categories}
                 eventKey={categories}
 
@@ -70,4 +70,4 @@ const handleShow = () => {
 
 
 
-export default NavbarComponent;
+export default NavbarComponents;

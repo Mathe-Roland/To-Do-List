@@ -1,4 +1,4 @@
-export function colors(status){
+export function colorsComponent(status){
 
         switch (status) {
           case "Finished":

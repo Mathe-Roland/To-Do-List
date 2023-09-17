@@ -1,14 +1,14 @@
 import './App.css';
 import NavbarComponent from './components/Navbar/Navbar';
-import { CardComponent } from './components/TaskCard/TaskCard';
-import { colors } from './components/Colors/colors';
+import { CardComponents } from './components/TaskCard/TaskCard';
+import { colorsComponent } from './components/Colors/colors';
 import { useState } from 'react';
-import ModalComponent from './components/Modal/Modal';
+import ModalComponents from './components/Modal/Modal';
 function App() {
   const data = [
     {
       id: "T-1",
-      taskname: "Create a Design System for Enum Workspace.",
+      taskname: "Creat a Design System for Enum Workspace.",
       categories: "Todo",
       text:"How Do You Do",
       date: new Date(2022, 5, 23).toLocaleDateString(),
@@ -123,7 +123,7 @@ function App() {
      
       <div/>
     <div className='row wrap justify-content-center'>
-      { isOpen && <ModalComponent 
+      { isOpen && <ModalComponents 
       saveChanges={savedChanges}
       CloseModal={setIsOpen}
       show={setIsOpen}
@@ -131,12 +131,12 @@ function App() {
 
       />}
       {filteredTasks.map((element) => (
-        <CardComponent
+        <CardComponents
           key={element.id}
           id={element.id}
           taskname={element.taskname} 
           text={element.text}
-          colors={colors(element.categories)}
+          colors={colorsComponent(element.categories)}
           status={element.categories}
           date={element.date}
           show={setIsOpen}

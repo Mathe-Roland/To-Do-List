@@ -37,7 +37,7 @@ const handleShow = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <NavDropdown title="Dropdown" id="basic-nav-dropdown"
-            onSelect={handleselectedCategory} activeKey={selectedCategory}
+            onSelect={handleselectedCategory} activekey={selectedCategory}
            >
               
 

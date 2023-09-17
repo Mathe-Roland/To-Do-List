@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import { colorsComponent } from '../Colors/colors';
 import { useEffect } from 'react';
+import "./Modal.css"
 
 function ModalComponents(props) {
   const [taskname,setTaskname]=useState("");
@@ -125,7 +126,7 @@ const handleDate=(e)=>{
                 placeholder="go shopping"
                 autoFocus
               />
-              <p>{formValidation.taskname}</p>
+              <p className={`${!formValidation.isValid && "error"}`}>{formValidation.taskname}</p>
               <Form.Label className="my-1" >Select a date</Form.Label>
               <Form.Control
                 className='my-1'
@@ -134,7 +135,7 @@ const handleDate=(e)=>{
                 type="date"
                 autoFocus
               />
-              <p>{formValidation.date}</p>
+              <p className={`${!formValidation.isValid && "error"}`}>{formValidation.date}</p>
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlSelect1">
             <Form.Label className='my-1'>Form Categories</Form.Label>
@@ -151,7 +152,7 @@ const handleDate=(e)=>{
                   </option>))
                 }
               </select>
-              <p>{formValidation.categories}</p>
+              <p className={`${!formValidation.isValid && "error"}`}>{formValidation.categories}</p>
             </Form.Group>
             <Form.Group
               className="mb-3"
@@ -160,7 +161,7 @@ const handleDate=(e)=>{
               <Form.Label>Example textarea</Form.Label>
               <Form.Control onChange={handleText} value={text} as="textarea" rows={3} />
             </Form.Group>
-            <p>{formValidation.text}</p>
+            <p className={`${!formValidation.isValid && "error"}`}>{formValidation.text}</p>
           </Form>
         </Modal.Body>
         <Modal.Footer>
